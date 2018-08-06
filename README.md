@@ -10,7 +10,7 @@ This project is Sput unit testing framework port to Arduino.
 - Very simple (single header file with macros)
 
 ## Install
-To install, just clone https://github.com/sadr0b0t/stepper_h git repo to $HOME/Arduino/libraries
+To install, just clone https://github.com/sadr0b0t/sput-ino git repo to $HOME/Arduino/libraries
 
 ~~~bash
 cd ~/Arduino/libraries/
@@ -23,7 +23,7 @@ Or on github page click Clone or download > Download ZIP, then install sput-ino-
 
 Basic example should appear in Arduino examples menu: File/Examples/sput-ino/sput-ino
 
-## Self-contained project example with tests
+## Self-contained Arduino sketch example with tests
 _For extended project layout (and running tests on desktop) see https://github.com/sadr0b0t/sput-ino-demo_
 
 Write some code to test
