@@ -195,3 +195,52 @@ void loop() {
 
 Compile and upload sketch to device, watch results in serial monitor.
 
+~~~
+#################### Start testing...
+
+== Entering suite #1, "a plus b" ==
+
+[1:1]  test_a_plus_b:#1  "2 + 2 == 4"  pass
+[1:2]  test_a_plus_b:#2  "-2 + 2 == 0"  pass
+[1:3]  test_a_plus_b:#3  "34000 + 34000 == 68000"  pass
+
+--> 3 check(s), 3 ok, 0 failed (0.00%)
+
+==> 3 check(s) in 1 suite(s) finished after 0.00 second(s),
+    3 succeeded, 0 failed (0.00%)
+
+[SUCCESS]
+
+== Entering suite #1, "a minus b" ==
+
+[1:1]  test_a_minus_b:#1  "115 - 6 == 109"  pass
+[1:2]  test_a_minus_b:#2  "13 - 17 == -4"  pass
+
+--> 2 check(s), 2 ok, 0 failed (0.00%)
+
+==> 2 check(s) in 1 suite(s) finished after 0.00 second(s),
+    2 succeeded, 0 failed (0.00%)
+
+[SUCCESS]
+
+== Entering suite #1, "led on even" ==
+
+[1:1]  test_led_on_even:#1  "num=2 => led#13 on"  pass
+[1:2]  test_led_on_even:#2  "num=2 => led#13 on"  pass
+[1:3]  test_led_on_even:#3  "num=5 => led#13 off"  pass
+[1:4]  test_led_on_even:#4  "num=5 => led#13 off"  pass
+[1:5]  test_led_on_even:#5  "num=18 => led#13 on"  pass
+[1:6]  test_led_on_even:#6  "num=18 => led#13 on"  pass
+
+--> 6 check(s), 6 ok, 0 failed (0.00%)
+
+==> 6 check(s) in 1 suite(s) finished after 0.00 second(s),
+    6 succeeded, 0 failed (0.00%)
+
+[SUCCESS]
+#################### Finished testing
+Just show that we call functions from tested lib, nothing useful here
+14+23=37
+14-23=-9
+~~~
+
