@@ -193,8 +193,7 @@ void loop() {
 }
 ~~~
 
-Compile and upload sketch to device, watch results in serial monitor.
-
+Compile and upload sketch to device, watch results in serial monitor (this one from ChipKIT Uno32, PIC32-based Arduino-based board)
 ~~~
 #################### Start testing...
 
