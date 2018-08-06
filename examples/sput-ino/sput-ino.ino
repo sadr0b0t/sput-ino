@@ -1,33 +1,10 @@
-# sput-ino
+// Self-contained project example with tests
+// see https://github.com/sadr0b0t/sput-ino-demo
+// for extended project layout
 
-Sput is an unit testing framework for C/C++ that focuses on simplicity of use and maximum portability.  
-https://www.use-strict.de/sput-unit-testing/
+/*******************************************/
+// some code to test
 
-This project is Sput unit testing framework port to Arduino.
-
-- Run unit tests on any Arduino device
-- Run same unit tests on desktop
-- Very simple (single header file with macros)
-
-## Install
-To install, just clone https://github.com/sadr0b0t/stepper_h git repo to $HOME/Arduino/libraries
-
-~~~bash
-cd ~/Arduino/libraries/
-git clone https://github.com/sadr0b0t/sput-ino.git
-~~~
-
-and restart IDE.
-
-Or on github page click Clone or download > Download ZIP, then install sput-ino-master.zip ZIP via Arduino library installation menu.
-
-Basic example should appear in Arduino examples menu: File/Examples/sput-ino/sput-ino
-
-## Self-contained project example with tests
-_For extended project layout (and running tests on desktop) see https://github.com/sadr0b0t/sput-ino-demo_
-
-Write some code to test
-~~~cpp
 /**
  * @return a plus b
  */
@@ -56,12 +33,10 @@ bool led_on_even(int pin, int num) {
     }
     return num % 2 == 0;
 }
-~~~
 
-Write tests with sput
-(for more details see http://www.use-strict.de/sput-unit-testing/tutorial.html)
-
-~~~cpp
+/*******************************************/
+// tests
+// http://www.use-strict.de/sput-unit-testing/tutorial.html
 #include "sput.h"
 
 /** Test a_plus_b call */
@@ -92,10 +67,10 @@ bool test_led_on_even() {
     sput_fail_unless(led_on_even(13, 18), "num=18 => led#13 on");
     sput_fail_unless(digitalRead(13) == HIGH, "num=18 => led#13 on");
 }
-~~~
 
-Pack tests to test suites
-~~~cpp
+/*******************************************/
+// test suites
+
 /** Test suite for a_plus_b call */
 int mylib_test_suite_a_plus_b() {
     sput_start_testing();
@@ -145,10 +120,8 @@ int mylib_test_suite() {
     sput_finish_testing();
     return sput_get_return_value();
 }
-~~~
 
-Run tests on device
-~~~cpp
+/** run tests on device */
 void run_tests() {
     Serial.println("#################### Start testing...");
 
@@ -169,10 +142,9 @@ void run_tests() {
     
     Serial.println("#################### Finished testing");
 }
-~~~
 
-Add setup/loop as usual and call test runner
-~~~cpp
+/*******************************************/
+
 void setup() {
     Serial.begin(9600);
     while (!Serial);
@@ -191,7 +163,4 @@ void setup() {
 void loop() {
     delay(2000);
 }
-~~~
-
-Compile and upload sketch to device, watch results in serial monitor.
 
