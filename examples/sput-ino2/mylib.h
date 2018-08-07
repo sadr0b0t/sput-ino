@@ -1,3 +1,5 @@
+#ifndef MYLIB_H
+#define MYLIB_H
 
 /**
  * @return a plus b
@@ -16,4 +18,6 @@ int a_minus_b(int a, int b);
  * @param true, if num is even
  */
 bool led_on_even(int pin, int num);
+
+#endif // MYLIB_TEST_H
 

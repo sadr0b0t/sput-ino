@@ -1,3 +1,5 @@
+#ifndef MYLIB_TEST_H
+#define MYLIB_TEST_H
 
 /** Test suite for a_plus_b call */
 int mylib_test_suite_a_plus_b();
@@ -10,4 +12,6 @@ int mylib_test_suite_led_on_even();
 
 /** All tests in one bundle */
 int mylib_test_suite();
+
+#endif // MYLIB_TEST_H
 
