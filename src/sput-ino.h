@@ -40,8 +40,8 @@
 #ifndef HAVE_SPUT_H
 #define HAVE_SPUT_H
 
-
-char SPUT_OUT_BUF[256];
+// char buffer for sprintf (max message len)
+char SPUT_OUT_BUF[128];
 
 #include "Arduino.h"
 
