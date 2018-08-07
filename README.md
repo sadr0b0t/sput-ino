@@ -182,13 +182,20 @@ void setup() {
 
     // other code - kinda application business logic
     Serial.println("Just show that we call functions from tested lib, nothing useful here");
+    
+    pinMode(13, OUTPUT);
+    
     Serial.print("14+23=");
     Serial.println(a_plus_b(14, 23));
     Serial.print("14-23=");
     Serial.println(a_minus_b(14, 23));
+    Serial.print("34000+34000=");
+    Serial.println(a_plus_b(34000, 34000));
 }
 
 void loop() {
+    static int i = 0;
+    led_on_even(13, i++);
     delay(2000);
 }
 ~~~
@@ -243,6 +250,7 @@ On ChipKIT Uno32, PIC32-based Arduino-based board:
 Just show that we call functions from tested lib, nothing useful here
 14+23=37
 14-23=-9
+34000+34000=68000
 ~~~
 
 on Arduino Uno (AVR 16 bit):
@@ -302,5 +310,6 @@ on Arduino Uno (AVR 16 bit):
 Just show that we call functions from tested lib, nothing useful here
 14+23=37
 14-23=-9
+34000+34000=2464
 ~~~
 
