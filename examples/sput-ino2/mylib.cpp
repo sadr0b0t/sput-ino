@@ -17,9 +17,9 @@ int a_minus_b(int a, int b) {
 
 /** 
  * Switch led on if number is even
- * @param pin len pin id
+ * @param pin led pin id
  * @param num number
- * @param true, if num is even
+ * @return true, if num is even
  */
 bool led_on_even(int pin, int num) {
     if(num % 2 == 0) {
