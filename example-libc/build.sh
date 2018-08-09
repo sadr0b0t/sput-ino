@@ -6,10 +6,10 @@
 #g++ -std=c++11 -c cpp_file_stub.cpp
 
 g++ -std=c++11 -c \
-    -I. -I../examples/sput-ino2 -I$HOME/Arduino/libraries/sput-ino/src \
+    -I. -I../examples/sput-ino-modules -I$HOME/Arduino/libraries/sput-ino/src \
     Arduino.cpp \
-    ../examples/sput-ino2/mylib.cpp \
-    ../examples/sput-ino2/mylib-test.cpp \
+    ../examples/sput-ino-modules/mylib.cpp \
+    ../examples/sput-ino-modules/mylib-test.cpp \
     mylib-test-main.cpp
 g++ *.o -o mylib_test
 
