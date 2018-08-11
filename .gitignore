@@ -1,5 +1,5 @@
 
-example-libc/mylib_test
+example-desktop/test_mylib
 
 # Prerequisites
 *.d

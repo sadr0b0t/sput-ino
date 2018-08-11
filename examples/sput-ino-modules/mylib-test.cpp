@@ -22,9 +22,25 @@ void test_a_minus_b() {
 
 /** Test test_led_on_even call */
 bool test_led_on_even() {
+  
+    // 1) this test shows that we can also test code, that uses Arduino API
+    // 2) please, consider this test also as kind of antipattern:
+    // - we make here device-specific calls which may pass or fail
+    //     on different devices
+    // - what we should test here is NOT that digitalWrite did MAKE changes
+    //     to GPIO register (so we check this with device-specific
+    //     pinMode+digitalRead), but that we did CALL digitallWrite
+    //     with specific params in tested code (this can hardly be
+    //     checked when we run test on device, but can easily be checked
+    //     when we run test on desktop with Arduino API mockups).
+    //     See desktop+mockup version of this test:
+    //       example-desktop/mylib-test-desktoponly.cpp
+    // - when we run this specific test on desktop, digitalRead
+    //     would be implemented as mockup anyway, so, probably, whatever
+    
+    pinMode(13, OUTPUT);
+    
     sput_fail_unless(led_on_even(13, 2), "num=2 => led#13 on");
-    // would pass on desktop, might fail or pass on difference devices
-    // (e.g.: Arduino Due - fail, ChipKIT Uno32 - pass)
     sput_fail_unless(digitalRead(13) == HIGH, "num=2 => led#13 on");
     
     sput_fail_unless(!led_on_even(13, 5), "num=5 => led#13 off");

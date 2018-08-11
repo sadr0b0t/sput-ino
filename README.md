@@ -81,6 +81,24 @@ void test_a_minus_b() {
 
 /** Test test_led_on_even call */
 bool test_led_on_even() {
+  
+    // 1) this test shows that we can also test code, that uses Arduino API
+    // 2) please, consider this test also as kind of antipattern:
+    // - we make here device-specific calls which may pass or fail
+    //     on different devices
+    // - what we should test here is NOT that digitalWrite did MAKE changes
+    //     to GPIO register (so we check this with device-specific
+    //     pinMode+digitalRead), but that we did CALL digitallWrite
+    //     with specific params in tested code (this can hardly be
+    //     checked when we run test on device, but can easily be checked
+    //     when we run test on desktop with Arduino API mockups).
+    //     See desktop+mockup version of this test:
+    //       example-desktop/mylib-test-desktoponly.cpp
+    // - when we run this specific test on desktop, digitalRead
+    //     would be implemented as mockup anyway, so, probably, whatever
+    
+    pinMode(13, OUTPUT);
+    
     sput_fail_unless(led_on_even(13, 2), "num=2 => led#13 on");
     // would pass on desktop, might fail or pass on difference devices
     // (e.g.: Arduino Due - fail, ChipKIT Uno32 - pass)
@@ -257,7 +275,6 @@ on Arduino Uno (AVR 16 bit):
 ~~~
 #################### Start testing...
 
-
 == Entering suite #1, "a#################### Start testing...
 
 == Entering suite #1, "a plus b" ==
@@ -267,7 +284,7 @@ on Arduino Uno (AVR 16 bit):
 [1:3]  test_a_plus_b:#3  "34000 + 34000 == 68000"  FAIL
 !    Type:      fail-unless
 !    Condition: a_plus_b(34000, 34000) == 68000
-!    Line:      48
+!    Line:      14
 
 --> 3 check(s), 2 ok, 1 failed (?%)
 
@@ -293,19 +310,16 @@ on Arduino Uno (AVR 16 bit):
 [1:1]  test_led_on_even:#1  "num=2 => led#13 on"  pass
 [1:2]  test_led_on_even:#2  "num=2 => led#13 on"  pass
 [1:3]  test_led_on_even:#3  "num=5 => led#13 off"  pass
-[1:4]  test_led_on_even:#4  "num=5 => led#13 off"  FAIL
-!    Type:      fail-unless
-!    Condition: digitalRead(13) == LOW
-!    Line:      65
+[1:4]  test_led_on_even:#4  "num=5 => led#13 off"  pass
 [1:5]  test_led_on_even:#5  "num=18 => led#13 on"  pass
 [1:6]  test_led_on_even:#6  "num=18 => led#13 on"  pass
 
---> 6 check(s), 5 ok, 1 failed (?%)
+--> 6 check(s), 6 ok, 0 failed (?%)
 
 ==> 6 check(s) in 1 suite(s) finished after ? second(s),
-    5 succeeded, 1 failed (?%)
+    6 succeeded, 0 failed (?%)
 
-[FAILURE]
+[SUCCESS]
 #################### Finished testing
 Just show that we call functions from tested lib, nothing useful here
 14+23=37
