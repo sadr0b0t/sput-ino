@@ -9,7 +9,7 @@ This project is Sput unit testing framework port to Arduino.
 - Run same unit tests on desktop
 - Very simple (single header file with macros)
 
-detailed manual (in Russian): https://habr.com/post/419445/
+detailed manual (in Russian): https://habr.com/post/419445/  
 good post on unit testing on Arduino: https://stackoverflow.com/questions/780819/how-can-i-unit-test-arduino-code#11437456
 
 ## Install
@@ -24,7 +24,7 @@ and restart IDE.
 
 Or on github page click Clone or download > Download ZIP, then install sput-ino-master.zip ZIP via Arduino library installation menu.
 
-Basic example should appear in Arduino examples menu: File > Examples > sput-ino > sput-ino-monolith and File > Examples > sput-ino > sput-ino-modules
+Basic example should appear in Arduino examples menu: File > Examples > sput-ino
 
 ## Self-contained Arduino sketch example with tests
 _For extended project layout see https://github.com/sadr0b0t/sput-ino-demo_
