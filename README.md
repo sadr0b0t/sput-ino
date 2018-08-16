@@ -9,6 +9,9 @@ This project is Sput unit testing framework port to Arduino.
 - Run same unit tests on desktop
 - Very simple (single header file with macros)
 
+detailed manual (in Russian): https://habr.com/post/419445/
+good post on unit testing on Arduino: https://stackoverflow.com/questions/780819/how-can-i-unit-test-arduino-code#11437456
+
 ## Install
 To install, just clone https://github.com/sadr0b0t/sput-ino git repo to $HOME/Arduino/libraries
 
@@ -21,10 +24,12 @@ and restart IDE.
 
 Or on github page click Clone or download > Download ZIP, then install sput-ino-master.zip ZIP via Arduino library installation menu.
 
-Basic example should appear in Arduino examples menu: File/Examples/sput-ino/sput-ino
+Basic example should appear in Arduino examples menu: File > Examples > sput-ino > sput-ino-monolith and File > Examples > sput-ino > sput-ino-modules
 
 ## Self-contained Arduino sketch example with tests
-_For extended project layout (and running tests on desktop) see https://github.com/sadr0b0t/sput-ino-demo_
+_For extended project layout see https://github.com/sadr0b0t/sput-ino-demo_
+
+https://github.com/sadr0b0t/sput-ino/blob/master/examples/sput-ino-monolith/sput-ino-monolith.ino
 
 Write some code to test
 ~~~cpp
@@ -271,7 +276,7 @@ Just show that we call functions from tested lib, nothing useful here
 34000+34000=68000
 ~~~
 
-on Arduino Uno (AVR 16 bit):
+on Arduino Uno (AVR 16 bit int):
 ~~~
 #################### Start testing...
 
@@ -326,4 +331,43 @@ Just show that we call functions from tested lib, nothing useful here
 14-23=-9
 34000+34000=2464
 ~~~
+
+## Separate tested code and tests: split monolith sketch to modules
+
+https://github.com/sadr0b0t/sput-ino/tree/master/examples/sput-ino-modules
+
+## Run tests on desktop
+
+Go to "sput-ino/example-desktop" dir
+https://github.com/sadr0b0t/sput-ino/tree/master/example-desktop
+
+~~~sh
+cd $HOME/Arduino/libraries/sput-ino/example-desktop
+~~~
+
+build tests with gcc
+~~~sh
+#!/bin/sh
+# simple build script, feel free to modify or convert it
+# to your favourite build system config
+
+#gcc -c c_file_stub.c
+#g++ -std=c++11 -c cpp_file_stub.cpp
+
+g++ -std=c++11 -c \
+    -I. -I../examples/sput-ino-modules -I$HOME/Arduino/libraries/sput-ino/src \
+    Arduino.cpp \
+    ../examples/sput-ino-modules/mylib.cpp \
+    ../examples/sput-ino-modules/mylib-test.cpp \
+    mylib-test-desktoponly.cpp \
+    mylib-test-main.cpp
+g++ *.o -o test_mylib
+~~~
+
+run compiled tests:
+~~~sh
+./test_mylib
+~~~
+
+see result in console (identical to above).
 
